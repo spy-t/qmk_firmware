@@ -39,6 +39,12 @@ qk_tap_dance_action_t tap_dance_actions[] = {[TD_DEL_CBSPC] = ACTION_TAP_DANCE_D
 
 #define KC_DEL_CBSPC TD(TD_DEL_CBSPC)
 
+enum combos { SD_CTL };
+
+const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {[SD_CTL] = COMBO(sd_combo, OSM(MOD_LCTL))};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
