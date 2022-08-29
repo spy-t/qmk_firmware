@@ -28,6 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
+// IMPORTANT(spyros): This changes the default LSHIFT + RSHIFT + B to flash the firmware to RALT + LALT + B
+#define IS_COMMAND() (get_mods() == MOD_MASK_ALT)
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 #undef RGBLED_NUM

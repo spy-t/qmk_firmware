@@ -39,9 +39,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {[TD_DEL_CBSPC] = ACTION_TAP_DANCE_D
 
 #define KC_DEL_CBSPC TD(TD_DEL_CBSPC)
 
-// IMPORTANT(spyros): This changes the default LSHIFT + RSHIFT + B to flash the firmware to RALT + LALT + B
-#define IS_COMMAND() (get_mods() == MOD_MASK_ALT)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
@@ -52,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
         KC_LGUI, KC_A, KC_S, KC_D, KC_F, KC_G, KC_LBRC, KC_RBRC, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ADPU, KC_PGDN, KC_HOME, KC_ADEN, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
+        KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ADPU, KC_PGDN, KC_HOME, KC_ADEN, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
         KC_ESC, KC_PPLS, KC_PMNS, KC_ALAS, KC_CTPL, KC_BSPC, KC_DEL_CBSPC, KC_ENT, KC_SPC, KC_ALMINS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
