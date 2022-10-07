@@ -1,3 +1,5 @@
+EXTRAFLAGS += -flto
+
 CAPS_WORD_ENABLE = yes
 RGB_ENABLE = no
 TAP_DANCE_ENABLE = yes
