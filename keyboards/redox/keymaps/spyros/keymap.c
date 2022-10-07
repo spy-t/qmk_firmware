@@ -16,13 +16,6 @@ enum custom_keycodes {
     ADJUST,
 };
 
-// Tap dance keycodes
-enum {
-    TD_DEL_CBSPC = 0, // Backspace when tapped, Control + Backspace when double tapped
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {[TD_DEL_CBSPC] = ACTION_TAP_DANCE_DOUBLE(KC_DEL, LCTL(KC_BSPC))};
-
 // Shortcut to make keymap more readable
 #define SYM_L LT(_SYMB, KC_LPRN)
 #define SYM_R LT(_SYMB, KC_RPRN)
@@ -42,19 +35,13 @@ qk_tap_dance_action_t tap_dance_actions[] = {[TD_DEL_CBSPC] = ACTION_TAP_DANCE_D
 #define HM_K    LSFT_T(KC_K)
 #define HM_J    LCTL_T(KC_J)
 
+#define SHIFT_DEL LSFT_T(KC_DEL)
+
 #define KC_NAGR LT(_NAV, KC_GRV)
 #define KC_NAMI LT(_NAV, KC_MINS)
 
 #define KC_ADEN LT(_ADJUST, KC_END)
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
-
-#define KC_DEL_CBSPC TD(TD_DEL_CBSPC)
-
-enum combos { SD_CTL };
-
-const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {[SD_CTL] = COMBO(sd_combo, OSM(MOD_LCTL))};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -68,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
         KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ADPU, KC_PGDN, KC_HOME, KC_ADEN, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-        KC_ESC, KC_PPLS, KC_PMNS, KC_ALAS, KC_CTPL, KC_BSPC, KC_DEL_CBSPC, KC_ENT, KC_SPC, KC_ALMINS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT
+           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,      KC_CTPL,    KC_BSPC , SHIFT_DEL    ,         KC_ENT  , KC_SPC ,    KC_ALMINS    , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
