@@ -4,20 +4,24 @@
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _QWERTY 0
-#define _SYMB 1
-#define _NAV 2
-#define _MOUSE 3
-#define _MEDIA 4
-#define _ADJUST 5
+#define _QWERTY  0
+#define _WORKMAN 1
+#define _SYMB    2
+#define _NAV     3
+#define _MOUSE   4
+#define _MEDIA   5
+#define _ADJUST  6
+#define _FN      7
 
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
+    WORKMAN,
     SYMB,
     NAV,
     MOUSE,
     MEDIA,
     ADJUST,
+    FN,
 };
 
 // Shortcut to make keymap more readable
@@ -30,13 +34,22 @@ enum custom_keycodes {
 // Home row mods
 #define HM_A LGUI_T(KC_A)
 #define HM_S LALT_T(KC_S)
+
 #define HM_D LSFT_T(KC_D)
+#define HM_W_H LSFT_T(KC_H)
+
 #define HM_F LCTL_T(KC_F)
+#define HM_W_T LCTL_T(KC_T)
 
 #define HM_SCLN RGUI_T(KC_SCLN)
 #define HM_L    RALT_T(KC_L)
 #define HM_K    RSFT_T(KC_K)
 #define HM_J    RCTL_T(KC_J)
+
+#define HM_W_I    RGUI_T(KC_I)
+#define HM_W_O    RALT_T(KC_O)
+#define HM_W_E    RSFT_T(KC_E)
+#define HM_W_N    RCTL_T(KC_N)
 
 
 #define KC_NAGR LT(_NAV, KC_GRV)
@@ -51,6 +64,10 @@ enum custom_keycodes {
 #define LTHUMB_3 LT(_MOUSE, KC_DEL)
 // #define SHIFT_DEL LSFT_T(KC_DEL)
 
+#define RTHUMB_1 KC_ENT
+#define RTHUMB_2 KC_SPC
+#define RTHUMB_3 LT(_FN, KC_ALMINS)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
@@ -63,7 +80,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
         KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ADPU, KC_PGDN, KC_HOME, KC_ADEN, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,         KC_ENT  , KC_SPC ,    KC_ALMINS    , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+        //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+        ),
+
+    [_WORKMAN] = LAYOUT(
+        //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+            KC_NAGR, KC_1   , KC_2   , KC_3   ,KC_4    , KC_5   ,                                              KC_6  , KC_7   , KC_8   , KC_9   , KC_0   , KC_NAMI,
+        //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+            KC_TAB , KC_Q   , KC_D   , KC_R   , KC_W   , KC_B   , SYM_L  ,                            SYM_R , KC_J   , KC_F   , KC_U   , KC_P   , KC_SCLN, KC_EQL,
+        //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+            KC_LGUI, HM_A   , HM_S   , HM_W_H , HM_W_T , KC_G   , KC_LBRC,                           KC_RBRC, KC_Y   , HM_W_N , HM_W_E , HM_W_O , HM_W_I , KC_QUOT,
+        //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+            KC_LSPO, KC_Z   , KC_X   , KC_M   , KC_C   , KC_V    ,KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_K   ,  KC_L   , KC_COMM , KC_DOT, KC_SLSH, KC_RSPC,
+        //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
@@ -131,7 +162,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
         //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
-        )};
+        ),
+
+    [_FN] = LAYOUT(
+           DF(_QWERTY) , _______, _______, _______, _______, _______,                                             _______          , _______   , _______, _______, _______, _______,
+
+           DF(_WORKMAN) , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX     , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______ ,        _______   , XXXXXXX , XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX,     XXXXXXX, _______,        XXXXXXX, XXXXXXX, XXXXXXX  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+        )
+};
 
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
