@@ -4,18 +4,18 @@
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _QWERTY  0
-#define _WORKMAN 1
-#define _SYMB    2
-#define _NAV     3
-#define _MOUSE   4
-#define _MEDIA   5
-#define _ADJUST  6
-#define _FN      7
+#define _QWERTY     0
+#define _COLEMAK_DH 1
+#define _SYMB       2
+#define _NAV        3
+#define _MOUSE      4
+#define _MEDIA      5
+#define _ADJUST     6
+#define _FN         7
 
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
-    WORKMAN,
+    COLEMAK_DH,
     SYMB,
     NAV,
     MOUSE,
@@ -34,23 +34,24 @@ enum custom_keycodes {
 // Home row mods
 #define HM_A LGUI_T(KC_A)
 #define HM_S LALT_T(KC_S)
-
 #define HM_D LSFT_T(KC_D)
-#define HM_W_H LSFT_T(KC_H)
-
 #define HM_F LCTL_T(KC_F)
-#define HM_W_T LCTL_T(KC_T)
 
 #define HM_SCLN RGUI_T(KC_SCLN)
 #define HM_L    RALT_T(KC_L)
 #define HM_K    RSFT_T(KC_K)
 #define HM_J    RCTL_T(KC_J)
 
-#define HM_W_I    RGUI_T(KC_I)
-#define HM_W_O    RALT_T(KC_O)
-#define HM_W_E    RSFT_T(KC_E)
-#define HM_W_N    RCTL_T(KC_N)
 
+#define HM_CM_A LGUI_T(KC_A)
+#define HM_CM_R LALT_T(KC_R)
+#define HM_CM_S LSFT_T(KC_S)
+#define HM_CM_T LCTL_T(KC_T)
+
+#define HM_CM_O    RGUI_T(KC_O)
+#define HM_CM_I    RALT_T(KC_I)
+#define HM_CM_E    RSFT_T(KC_E)
+#define HM_CM_N    RCTL_T(KC_N)
 
 #define KC_NAGR LT(_NAV, KC_GRV)
 #define KC_NAMI LT(_NAV, KC_MINS)
@@ -84,15 +85,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
-    [_WORKMAN] = LAYOUT(
+    [_COLEMAK_DH] = LAYOUT(
         //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
             KC_NAGR, KC_1   , KC_2   , KC_3   ,KC_4    , KC_5   ,                                              KC_6  , KC_7   , KC_8   , KC_9   , KC_0   , KC_NAMI,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_TAB , KC_Q   , KC_D   , KC_R   , KC_W   , KC_B   , SYM_L  ,                            SYM_R , KC_J   , KC_F   , KC_U   , KC_P   , KC_SCLN, KC_EQL,
+            KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , SYM_L  ,                            SYM_R , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, KC_EQL,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_LGUI, HM_A   , HM_S   , HM_W_H , HM_W_T , KC_G   , KC_LBRC,                           KC_RBRC, KC_Y   , HM_W_N , HM_W_E , HM_W_O , HM_W_I , KC_QUOT,
+            KC_LGUI, HM_CM_A, HM_CM_R, HM_CM_S, HM_CM_T, KC_G   , KC_LBRC,                           KC_RBRC, KC_M   ,HM_CM_N , HM_CM_E, HM_CM_I, HM_CM_O , KC_QUOT,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_LSPO, KC_Z   , KC_X   , KC_M   , KC_C   , KC_V    ,KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_K   ,  KC_L   , KC_COMM , KC_DOT, KC_SLSH, KC_RSPC,
+            KC_LSPO, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V    ,KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_K   ,  KC_H   , KC_COMM , KC_DOT, KC_SLSH, KC_RSPC,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
            KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
@@ -167,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FN] = LAYOUT(
            DF(_QWERTY) , _______, _______, _______, _______, _______,                                             _______          , _______   , _______, _______, _______, _______,
 
-           DF(_WORKMAN) , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+           DF(_COLEMAK_DH) , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
            XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX     , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
