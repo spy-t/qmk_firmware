@@ -7,12 +7,14 @@
 #define _QWERTY 0
 #define _SYMB 1
 #define _NAV 2
-#define _ADJUST 3
+#define _MOUSE 3
+#define _ADJUST 4
 
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     SYMB,
     NAV,
+    MOUSE,
     ADJUST,
 };
 
@@ -31,15 +33,16 @@ enum custom_keycodes {
 #define HM_F LCTL_T(KC_F)
 
 #define HM_SCLN RGUI_T(KC_SCLN)
-#define HM_L    LALT_T(KC_L)
-#define HM_K    LSFT_T(KC_K)
-#define HM_J    LCTL_T(KC_J)
+#define HM_L    RALT_T(KC_L)
+#define HM_K    RSFT_T(KC_K)
+#define HM_J    RCTL_T(KC_J)
 
-#define SHIFT_DEL LSFT_T(KC_DEL)
 
 #define KC_NAGR LT(_NAV, KC_GRV)
 #define KC_NAMI LT(_NAV, KC_MINS)
 #define LT_BSPC_NAV LT(_NAV, KC_BSPC)
+// TODO(spyros): for now use the rightmost thumb key for a layer change. #define SHIFT_DEL LSFT_T(KC_DEL)
+#define LT_DEL_MOUSE LT(_MOUSE, KC_DEL)
 
 #define KC_ADEN LT(_ADJUST, KC_END)
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
@@ -56,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
         KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ADPU, KC_PGDN, KC_HOME, KC_ADEN, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,      KC_CTPL,    LT_BSPC_NAV , SHIFT_DEL    ,         KC_ENT  , KC_SPC ,    KC_ALMINS    , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,      KC_CTPL,    LT_BSPC_NAV , LT_DEL_MOUSE    ,         KC_ENT  , KC_SPC ,    KC_ALMINS    , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
@@ -76,16 +79,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+           _______ , _______, _______, _______, _______, _______,                                             _______, _______, _______, _______, _______, _______,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-        XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, KC_WH_U, XXXXXXX, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+           XXXXXXX , XXXXXXX, KC_MS_U, XXXXXXX, KC_WH_U, XXXXXXX, _______,                           _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-        XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX,
+           XXXXXXX, KC_MS_L,  KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX, _______,                           _______, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, XXXXXXX, XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______ ,        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1, KC_BTN2, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1, KC_BTN2, _______, _______ ,        _______ , XXXXXXX,     XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX
         //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+        ),
+
+    [_MOUSE] = LAYOUT(
+           _______ , _______, _______, _______, _______, _______,                                             _______          , _______   , _______, _______, _______, _______,
+
+           XXXXXXX , XXXXXXX, KC_MS_U, XXXXXXX, KC_WH_U, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, KC_LGUI,  KC_LALT, KC_LSFT, KC_LCTL, XXXXXXX, _______,                             _______, KC_MS_LEFT     , KC_MS_DOWN     , KC_MS_UP, KC_MS_RIGHT, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______ ,        _______   , XXXXXXX , KC_MS_WH_LEFT , KC_MS_WH_DOWN, KC_MS_WH_UP, KC_MS_WH_RIGHT, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX,     XXXXXXX, _______,        KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
         ),
 
     [_ADJUST] = LAYOUT(
