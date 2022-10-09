@@ -8,13 +8,15 @@
 #define _SYMB 1
 #define _NAV 2
 #define _MOUSE 3
-#define _ADJUST 4
+#define _MEDIA 4
+#define _ADJUST 5
 
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     SYMB,
     NAV,
     MOUSE,
+    MEDIA,
     ADJUST,
 };
 
@@ -23,7 +25,6 @@ enum custom_keycodes {
 #define SYM_R LT(_SYMB, KC_RPRN)
 
 #define KC_ALAS LALT_T(KC_PAST)
-#define KC_CTPL LCTL_T(KC_BSLS)
 #define KC_ALMINS RALT_T(KC_MINS)
 
 // Home row mods
@@ -40,12 +41,15 @@ enum custom_keycodes {
 
 #define KC_NAGR LT(_NAV, KC_GRV)
 #define KC_NAMI LT(_NAV, KC_MINS)
-#define LT_BSPC_NAV LT(_NAV, KC_BSPC)
-// TODO(spyros): for now use the rightmost thumb key for a layer change. #define SHIFT_DEL LSFT_T(KC_DEL)
-#define LT_DEL_MOUSE LT(_MOUSE, KC_DEL)
 
 #define KC_ADEN LT(_ADJUST, KC_END)
 #define KC_ADPU LT(_ADJUST, KC_PGUP)
+
+// I hate ascii keyboard diagrams
+#define LTHUMB_1 LT(_MEDIA, KC_BSLS)
+#define LTHUMB_2 LT(_NAV, KC_BSPC)
+#define LTHUMB_3 LT(_MOUSE, KC_DEL)
+// #define SHIFT_DEL LSFT_T(KC_DEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -59,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
         KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ADPU, KC_PGDN, KC_HOME, KC_ADEN, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,      KC_CTPL,    LT_BSPC_NAV , LT_DEL_MOUSE    ,         KC_ENT  , KC_SPC ,    KC_ALMINS    , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,         KC_ENT  , KC_SPC ,    KC_ALMINS    , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
@@ -101,6 +105,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______ ,        _______   , XXXXXXX , KC_MS_WH_LEFT , KC_MS_WH_DOWN, KC_MS_WH_UP, KC_MS_WH_RIGHT, XXXXXXX, XXXXXXX,
 
            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX,     XXXXXXX, _______,        KC_MS_BTN1, KC_MS_BTN2, KC_MS_BTN3  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+        ),
+
+    [_MEDIA] = LAYOUT(
+           _______ , _______, _______, _______, _______, _______,                                             _______          , _______   , _______, _______, _______, _______,
+
+           XXXXXXX , XXXXXXX, KC_MS_U, XXXXXXX, KC_WH_U, XXXXXXX, _______,                             _______, XXXXXXX        , XXXXXXX   , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, KC_LGUI,  KC_LALT, KC_LSFT, KC_LCTL, XXXXXXX, _______,                             _______, KC_MPRV        , KC_VOLD     , KC_VOLU, KC_MNXT, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______ ,        _______   , XXXXXXX , KC_MS_WH_LEFT , KC_MS_WH_DOWN, KC_MS_WH_UP, KC_MS_WH_RIGHT, XXXXXXX, XXXXXXX,
+
+           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX,     XXXXXXX, _______,        KC_MSTP, KC_MPLY, KC_MUTE  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
         ),
 
     [_ADJUST] = LAYOUT(
