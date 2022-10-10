@@ -39,7 +39,7 @@ enum custom_keycodes {
 #define HM_D LSFT_T(KC_D)
 #define HM_F LCTL_T(KC_F)
 
-#define HM_SCLN RGUI_T(KC_SCLN)
+#define HM_QUOT RGUI_T(KC_QUOT)
 #define HM_L    RALT_T(KC_L)
 #define HM_K    RSFT_T(KC_K)
 #define HM_J    RCTL_T(KC_J)
@@ -75,29 +75,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
         //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-            KC_NAGR, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                             KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_NAMI,
+            XXXXXXX, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                                             KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-             KC_TAB, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , SYM_L  ,                            SYM_R , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_EQL ,
+            XXXXXXX, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , SYM_L  ,                            SYM_R , KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , XXXXXXX ,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_LGUI,  HM_A  , HM_S   , HM_D   , HM_F   , KC_G   , KC_LBRC,                          KC_RBRC , KC_H   ,  HM_J  , HM_K   , HM_L   , HM_SCLN, KC_QUOT,
+            XXXXXXX,  HM_A  , HM_S   , HM_D   , HM_F   , KC_G   , KC_LBRC,                          KC_RBRC , KC_H   ,  HM_J  , HM_K   , HM_L   , HM_QUOT, XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_LSPO, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_N   , KC_M   , KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
+            XXXXXXX, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_N   , KC_M   , KC_COMM, KC_DOT, KC_SLSH, XXXXXXX,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+           XXXXXXX     , XXXXXXX, XXXXXXX, XXXXXXX,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
     [_COLEMAK_DH] = LAYOUT(
         //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-            KC_NAGR, KC_1   , KC_2   , KC_3   ,KC_4    , KC_5   ,                                              KC_6  , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX,
+           XXXXXXX , KC_1   , KC_2   , KC_3   ,KC_4    , KC_5   ,                                              KC_6  , KC_7   , KC_8   , KC_9   , KC_0   , XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , SYM_L  ,                            SYM_R , KC_J   , KC_L   , KC_U   , KC_Y   , KC_QUOT, XXXXXXX,
+           XXXXXXX , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , SYM_L  ,                            SYM_R , KC_J   , KC_L   , KC_U   , KC_Y   , KC_QUOT, XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_LGUI, HM_CM_A, HM_CM_R, HM_CM_S, HM_CM_T, KC_G   , KC_LBRC,                           KC_RBRC, KC_M   ,HM_CM_N , HM_CM_E, HM_CM_I, HM_CM_O , XXXXXXX,
+            XXXXXXX, HM_CM_A, HM_CM_R, HM_CM_S, HM_CM_T, KC_G   , KC_LBRC,                           KC_RBRC, KC_M   ,HM_CM_N , HM_CM_E, HM_CM_I, HM_CM_O , XXXXXXX,
         //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-            KC_LSPO, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V    ,KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_K   ,  KC_H   , KC_COMM , KC_DOT, KC_SLSH, XXXXXXX,
+            XXXXXXX, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V    ,KC_ADPU, KC_PGDN,         KC_HOME, KC_ADEN, KC_K   ,  KC_H   , KC_COMM , KC_DOT, KC_SLSH, XXXXXXX,
         //├────────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼──────────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-           KC_ESC      , KC_PPLS, KC_PMNS, KC_ALAS,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+           XXXXXXX     , XXXXXXX, XXXXXXX, XXXXXXX,     LTHUMB_1,    LTHUMB_2 , LTHUMB_3    ,        RTHUMB_1,RTHUMB_2,    RTHUMB_3     , XXXXXXX, XXXXXXX, XXXXXXX  , XXXXXXX
         //└────────────┴────────┴────────┴────────┘    └────────┘   └────────┴──────────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
         ),
 
@@ -204,7 +204,7 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
         case HM_J:
         case HM_K:
         case HM_L:
-        case HM_SCLN:
+        case HM_QUOT:
             return true;
         default:
             return false;
