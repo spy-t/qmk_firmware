@@ -24,11 +24,8 @@
 #    define RGBLIGHT_LIMIT_VAL 150
 #endif
 
-// Lets you roll mod-tap keys
-#define IGNORE_MOD_TAP_INTERRUPT
-
 #define IS_COMMAND() (get_mods() == MOD_MASK_ALT)
-#define BOTH_SHIFTS_TURN_ON_CAPS_WORD
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 #define TAPPING_TERM 200
 
